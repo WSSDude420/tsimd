@@ -25,9 +25,9 @@
 # additional target to run clang-format on all source files
 
 set (EXCLUDE_DIRS
-  ${CMAKE_SOURCE_DIR}/build
-  ${CMAKE_SOURCE_DIR}/examples/embc
-  ${CMAKE_SOURCE_DIR}/tests/doctest
+  ${CMAKE_CURRENT_SOURCE_DIR}/build
+  ${CMAKE_CURRENT_SOURCE_DIR}/examples/embc
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/doctest
 )
 
 # get all project files

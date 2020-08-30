@@ -30,7 +30,7 @@ cmake_minimum_required(VERSION 3.2)
 
 project(tsimd)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(tsimd)
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
@@ -68,7 +68,12 @@ if ((TSIMD_BUILD_ISA STREQUAL "NATIVE" OR TSIMD_BUILD_ISA STREQUAL "SCALAR")
           "You cannot use the 'NATIVE' or 'SCALAR' ISA target with ispc.")
 endif()
 
-include_directories(${CMAKE_SOURCE_DIR})
+set(TSIMD_INCLUDES
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  CACHE INTERNAL "TSIMD_INCLUDES"
+)
+
+include_directories(${TSIMD_INCLUDES})
 
 option(TSIMD_BUILD_TESTS "Build unit tests" OFF)
 option(TSIMD_BUILD_EXAMPLES "Build examples" ON)
