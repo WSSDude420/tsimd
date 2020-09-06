@@ -46,7 +46,7 @@ namespace tsimd {
   {
 #if defined(__SSE4_1__)
     return _mm_blendv_ps(f, t, m);
-#elif defined(__SSE4_2__)
+#elif defined(__SSE__)
     return _mm_or_ps(_mm_and_ps(m, t), _mm_andnot_ps(m, f));
 #else
     vfloat4 result;
@@ -63,7 +63,7 @@ namespace tsimd {
 #if defined(__SSE4_1__)
     return _mm_castps_si128(
         _mm_blendv_ps(_mm_castsi128_ps(f), _mm_castsi128_ps(t), m));
-#elif defined(__SSE4_2__)
+#elif defined(__SSE2__)
     return _mm_or_si128(_mm_and_si128(m, t), _mm_andnot_si128(m, f));
 #else
     vint4 result;
